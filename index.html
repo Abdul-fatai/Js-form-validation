@@ -7,28 +7,38 @@
 <body onload="init()">
 
 <div class="container">
-  <form id="regForm">
-    <h1 class="text-center">Register with Us</h1>
-    <div class="alert" id="msg"></div>
-  <div class="form-group">
-    <label>Name</label>
-    <input type="text" class="form-control" id="name" placeholder="name">
+  <div class="card">
+    <div class="card-header">
+      Register
+    </div> 
 
-    <label>Email</label>
-    <input type="text" class="form-control" id="email" placeholder="email">
+    <div class="card-body">
+      <form id="regForm">
+      <div class="alert" id="msg"></div>
+      <div class="form-group">
+      <label>Name</label>
+      <input type="text" class="form-control" id="name" placeholder="name">
 
-    <label>Password</label>
-    <input type="password" class="form-control" id="password" placeholder="password">
+      <label>Email</label>
+      <input type="text" class="form-control" id="email" placeholder="email">
 
-    <label>Password confirmation</label>
-    <input type="password" class="form-control" id="password2" placeholder="Reapeat">
-  </div>
+      <label>Phone</label>
+      <input type="number" class="form-control" id="phone" placeholder="Phone number">
 
-  <div class="form-group">
-    <button type="submit" class="btn btn-primary form-control">Submit</button>
-  </div>
+      <label>Password</label>
+      <input type="password" class="form-control" id="password" placeholder="password">
+
+      <label>Password confirmation</label>
+      <input type="password" class="form-control" id="password2" placeholder="Reapeat">
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary form-control">Submit</button>
+    </div>
   
 </form>
+    </div>
+  </div>
 <div>
 
     <script>
@@ -40,31 +50,33 @@
          e.preventDefault();
          var name = document.getElementById('name').value;
          var email = document.getElementById('email').value;
+         var phone = document.getElementById('phone').value;
          var password = document.getElementById('password').value;
          var password2 = document.getElementById('password2').value;
 
          var msg = document.getElementById("msg");
 
-         if (name == '' || email == '' || password == '' || password2 == '') {
+         if (name == '' || email == '' || phone == '' ||  password == '' || password2 == '') {
             msg.className = "alert alert-danger"
             msg.innerHTML = "All field are required";
          } else {
-          if (name.length < 3) {
+          if (password.length < 8) {
             msg.className = "alert alert-danger"
-            msg.innerHTML = "Minimum characters is 3";
+            msg.innerHTML = "Minimum characters is 8";
           } else{
               var atpos = email.indexOf("@");
               var dotpos = email.lastIndexOf(".");
-            if (atpos < 1 || dotpos < atpos+2 || dotpos+2 >= email.length) {
+              var info = email.includes("a4mation");
+            if (info < 1 || atpos < 1 || dotpos < atpos+2 || dotpos+2 >= email.length) {
                 msg.className = "alert alert-danger"
-                msg.innerHTML = "Input valid email";
+                msg.innerHTML = "Invalid email address";
             } else{
               if (password != password2) {
                 msg.className = "alert alert-danger"
                 msg.innerHTML = "Passwords did not match";
               } else{
                 msg.className = "alert alert-success"
-                msg.innerHTML = "All infomation has been submmited";
+                msg.innerHTML = "Form submitted successfully check your email to verify account";
               }
               
             }
