@@ -60,30 +60,39 @@
             msg.className = "alert alert-danger"
             msg.innerHTML = "All field are required";
          } else {
+
+          //Minimum length of password
           if (password.length < 8) {
             msg.className = "alert alert-danger"
             msg.innerHTML = "Minimum characters of password is 8";
           } else{
-              var atpos = email.indexOf("@");
-              var dotpos = email.lastIndexOf(".");
-              var info = email.includes("a4mation");
-            if (info < 1 || atpos < 1 || dotpos < atpos+2 || dotpos+2 >= email.length) {
-                msg.className = "alert alert-danger"
-                msg.innerHTML = "Email address must include a4mation";
-            } else{
-              if (password != password2) {
+
+            //Checking if password are same
+            if (password != password2) {
                 msg.className = "alert alert-danger"
                 msg.innerHTML = "Passwords did not match";
+            } else{
+
+              //Email validation
+                var atpos = email.indexOf("@");
+                var dotpos = email.lastIndexOf(".");
+                var info = email.includes("a4mation");
+              if (info < 1 || atpos < 1 || dotpos < atpos+2 || dotpos+2 >= email.length) {
+                  msg.className = "alert alert-danger"
+                  msg.innerHTML = "Email address must include a4mation";
               } else{
+                //Phone number validation
                   var phoneno = /^\d{10}$/;
                   if(!phone.match(phoneno)) {
                   msg.className = "alert alert-danger"
-                  msg.innerHTML = "Not a valid Phone Number Min 10, Max 10";
+                  msg.innerHTML = "Must be a Number Min 10, Max 10";
                 } else{
+
+                  //Name field must contain characters only
                   var namex = /[a-z]/ig;
                   if(!name.match(namex)) {
                     msg.className = "alert alert-danger"
-                    msg.innerHTML = "Must be a character";
+                    msg.innerHTML = "Must be a characters only";
                   } else{
                     msg.className = "alert alert-success"
                     msg.innerHTML = "Form submitted successfully check your email to verify account";
