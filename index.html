@@ -23,13 +23,13 @@
       <input type="text" class="form-control" id="email" placeholder="email">
 
       <label>Phone</label>
-      <input type="number" class="form-control" id="phone" placeholder="Phone number">
+      <input type="text" class="form-control" id="phone" placeholder="Phone number">
 
       <label>Password</label>
       <input type="password" class="form-control" id="password" placeholder="password">
 
       <label>Password confirmation</label>
-      <input type="password" class="form-control" id="password2" placeholder="Reapeat">
+      <input type="password" class="form-control" id="password2" placeholder="Reapeat password">
     </div>
 
     <div class="form-group">
@@ -62,21 +62,33 @@
          } else {
           if (password.length < 8) {
             msg.className = "alert alert-danger"
-            msg.innerHTML = "Minimum characters is 8";
+            msg.innerHTML = "Minimum characters of password is 8";
           } else{
               var atpos = email.indexOf("@");
               var dotpos = email.lastIndexOf(".");
               var info = email.includes("a4mation");
             if (info < 1 || atpos < 1 || dotpos < atpos+2 || dotpos+2 >= email.length) {
                 msg.className = "alert alert-danger"
-                msg.innerHTML = "Invalid email address";
+                msg.innerHTML = "Email address must include a4mation";
             } else{
               if (password != password2) {
                 msg.className = "alert alert-danger"
                 msg.innerHTML = "Passwords did not match";
               } else{
-                msg.className = "alert alert-success"
-                msg.innerHTML = "Form submitted successfully check your email to verify account";
+                  var phoneno = /^\d{10}$/;
+                  if(!phone.match(phoneno)) {
+                  msg.className = "alert alert-danger"
+                  msg.innerHTML = "Please enter a number";
+                } else{
+                  var namex = /[a-z]/ig;
+                  if(!name.match(namex)) {
+                    msg.className = "alert alert-danger"
+                    msg.innerHTML = "Must be a character";
+                  } else{
+                    msg.className = "alert alert-success"
+                    msg.innerHTML = "Form submitted successfully check your email to verify account";
+                  }
+                }
               }
               
             }
