@@ -78,7 +78,7 @@
                   var phoneno = /^\d{10}$/;
                   if(!phone.match(phoneno)) {
                   msg.className = "alert alert-danger"
-                  msg.innerHTML = "Please enter a number";
+                  msg.innerHTML = "Not a valid Phone Number Min 10, Max 10";
                 } else{
                   var namex = /[a-z]/ig;
                   if(!name.match(namex)) {
