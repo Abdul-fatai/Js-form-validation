@@ -1,110 +1,56 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Validation form</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-<body onload="init()">
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<div class="container w-50 mt-5">
-  <div class="card">
-    <div class="card-header">
-      Register
-    </div> 
-    <div class="card-body">
-      <form id="regForm">
-      <div class="alert" id="msg"></div>
-      <div class="form-group">
-      
-      <div class="form-group">
-        <input type="text" class="form-control" id="name" placeholder="name" autofocus="on">
-      </div>
-      <div class="form-group">
-        <input type="email" class="form-control" id="email" placeholder="email">
-     </div>
-     <div class="form-group">
-       <input type="tel" class="form-control" id="phone" placeholder="Phone number">
-     </div>
-     <div class="form-group">
-        <input type="password" class="form-control" id="password" placeholder="password">
-     </div>
-     <div class="form-group">
-       <input type="password" class="form-control" id="password2" placeholder="Reapeat password">
-     </div>
-    <div class="text-center">
-      <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Register Form</title>
+  </head>
+  <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto mt-5">
+                <div class="card card-body">
+                        <h1 class="text-center">Register form</h1>
+                        <form>
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" class="form-control" placeholder="Name" id="name">
+                                <div class="invalid-feedback">Name must be between 2 and 10 characters</div>
+                            </div>
+                            <div class="form-group">
+                                <label>Zipcode</label>
+                                <input type="text" class="form-control" placeholder="Zipcode" id="zip">
+                                <div class="invalid-feedback">Enter a valid zipcode</div>
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="text" class="form-control" placeholder="Email" id="email">
+                                <div class="invalid-feedback">Enter a valid email</div>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <input type="text" class="form-control" placeholder="Phone Number" id="phone">
+                                <div class="invalid-feedback">Enter a valid phone</div>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-primary btn-block" value="Submit">
+                            </div>
+                        </form>
+                </div>
+            </div>
+        </div>
     </div>
-  </form>
- </div>
-<div>
 
-    <script>
-       function init(){
-        console.log('Page Loading...');
-       }
-
-       function register(e) {
-         e.preventDefault();
-         var name = document.getElementById('name').value;
-         var email = document.getElementById('email').value;
-         var phone = document.getElementById('phone').value;
-         var password = document.getElementById('password').value;
-         var password2 = document.getElementById('password2').value;
-
-         var msg = document.getElementById("msg");
-
-         if (name == '' || email == '' || phone == '' ||  password == '' || password2 == '') {
-            msg.className = "alert alert-danger"
-            msg.innerHTML = "All field are required";
-         } else {
-
-          //Minimum length of password
-          if (password.length < 8) {
-            msg.className = "alert alert-danger"
-            msg.innerHTML = "Minimum characters of password is 8";
-          } else{
-
-            //Checking if password are same
-            if (password != password2) {
-                msg.className = "alert alert-danger"
-                msg.innerHTML = "Passwords did not match";
-            } else{
-
-              //Email validation
-                var atpos = email.indexOf("@");
-                var dotpos = email.lastIndexOf(".");
-                var info = email.includes("a4mation");
-              if (info < 1 || atpos < 1 || dotpos < atpos+2 || dotpos+2 >= email.length) {
-                  msg.className = "alert alert-danger"
-                  msg.innerHTML = "Email address must include a4mation";
-              } else{
-                //Phone number validation
-                  var phoneno = /^\d{10}$/;
-                  if(!phone.match(phoneno)) {
-                  msg.className = "alert alert-danger"
-                  msg.innerHTML = "Must be a Number Min 10, Max 10";
-                } else{
-
-                  //Name field must contain characters only
-                  var namex = /[a-z]/ig;
-                  if(!name.match(namex)) {
-                    msg.className = "alert alert-danger"
-                    msg.innerHTML = "Must be a characters only";
-                  } else{
-                    msg.className = "alert alert-success"
-                    msg.innerHTML = "Form submitted successfully check your email to verify account";
-                  }
-                }
-              }
-              
-            }
-          }
-          
-         }
-
-       }
-
-       document.getElementById('regForm').addEventListener('submit', register, false);
-    </script>
-</body>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+  </body>
 </html>
