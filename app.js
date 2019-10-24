@@ -1,8 +1,8 @@
 //Form Blur Event Listeners
-document.getElementById('name').addEventListener('blur', validateName);
-document.getElementById('zip').addEventListener('blur', validateZip);
-document.getElementById('email').addEventListener('blur', validateEmail);
-document.getElementById('phone').addEventListener('blur', validatePhone);
+document.getElementById('name').addEventListener('keyup', validateName);
+document.getElementById('zip').addEventListener('keyup', validateZip);
+document.getElementById('email').addEventListener('keyup', validateEmail);
+document.getElementById('phone').addEventListener('keyup', validatePhone);
 
 function validateName() {
     const name = document.getElementById('name');
